@@ -7,6 +7,7 @@ const options = {
     background: "#192228",
     foreColor: "white"
   },
+
   series: [{
     name: "Population",
     data: [
@@ -22,6 +23,7 @@ const options = {
       126573480
     ]
   }],
+
   xaxis: {
     categories: [
       "China",
@@ -36,9 +38,11 @@ const options = {
       "Japan"
     ]
   },
+
   fill: {
     colors: ["#a0ecff"] // bar-color
   },
+
   dataLabels: {
     enabled: false
   },
@@ -55,19 +59,35 @@ const options = {
   }
 };
 
-// Initialize chart
+// Initialize and render chart
 const chart = new ApexCharts(document.querySelector("#chart"), options);
-
-// Render chart
 chart.render();
 
-// Change the orientation of the chart to horizontal
-document.getElementById("change").addEventListener("click", () =>
+// Holds the current orientation
+let isVertical = true
+
+// Toggle the bar chart's orientation (Vertical <-> Horizontal)
+document.getElementById("toggle").addEventListener("click", () => {
+  isVertical = ! isVertical;
+
   chart.updateOptions({
     plotOptions: {
       bar: {
-        horizontal: true
+        horizontal: !isVertical
       }
     }
-  })
-);
+  });
+
+  toggleButton();
+});
+
+// Toggles the text for the button
+const toggleButton = () => {
+  let button = document.getElementById("toggle");
+
+  if (button.innerHTML === "Horizontal") {
+    button.innerHTML = "Vertical";
+  } else {
+    button.innerHTML = "Horizontal";
+  };
+};
