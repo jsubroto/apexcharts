@@ -7,22 +7,24 @@ const options = {
     background: "#192228",
     foreColor: "white"
   },
-
-  series: [{
-    name: "Population",
-    data: [
-      1376048940, 
-      1311050530, 
-      325843650, 
-      257563820, 
-      207847530, 
-      188924870, 
-      182201960, 
-      160995640, 
-      143456920, 
-      126573480
-    ]
-  }],
+  
+  series: [
+    {
+      name: "Population",
+      data: [
+        1376048940, 
+        1311050530, 
+        325843650, 
+        257563820, 
+        207847530, 
+        188924870, 
+        182201960, 
+        160995640, 
+        143456920, 
+        126573480
+      ].map(x => x/1000000)
+    }
+  ],
 
   xaxis: {
     categories: [
@@ -55,6 +57,17 @@ const options = {
     style: {
       fontSize: "25px",
       color: "white"
+    }
+  },
+
+  subtitle: {
+    text: "(in millions)",
+    align: 'center',
+    offsetY: 60,
+    floating: false,
+    style: {
+      fontSize:  '18px',
+      color:  'white',
     }
   }
 };
