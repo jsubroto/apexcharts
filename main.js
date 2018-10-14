@@ -60,3 +60,14 @@ const chart = new ApexCharts(document.querySelector("#chart"), options);
 
 // Render chart
 chart.render();
+
+// Change the orientation of the chart to horizontal
+document.getElementById("change").addEventListener("click", () =>
+  chart.updateOptions({
+    plotOptions: {
+      bar: {
+        horizontal: true
+      }
+    }
+  })
+);
