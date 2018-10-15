@@ -7,22 +7,22 @@ const options = {
     background: "#192228",
     foreColor: "white"
   },
-  
+
   series: [
     {
       name: "Population",
       data: [
-        1376048940, 
-        1311050530, 
-        325843650, 
-        257563820, 
-        207847530, 
-        188924870, 
-        182201960, 
-        160995640, 
-        143456920, 
+        1376048940,
+        1311050530,
+        325843650,
+        257563820,
+        207847530,
+        188924870,
+        182201960,
+        160995640,
+        143456920,
         126573480
-      ].map(x => x/1000000)
+      ].map(x => x / 1000000)
     }
   ],
 
@@ -60,14 +60,22 @@ const options = {
     }
   },
 
+  tooltip: {
+    y: {
+      formatter: function(value) {
+        return value + " million";
+      }
+    }
+  },
+
   subtitle: {
     text: "(in millions)",
-    align: 'center',
+    align: "center",
     offsetY: 60,
     floating: false,
     style: {
-      fontSize:  '18px',
-      color:  'white',
+      fontSize: "18px",
+      color: "white"
     }
   }
 };
@@ -77,19 +85,19 @@ const chart = new ApexCharts(document.querySelector("#chart"), options);
 chart.render();
 
 // Holds the current orientation
-let isVertical = true
+let isVertical = true;
 
 // Toggle the bar chart's orientation (Vertical <-> Horizontal)
 document.getElementById("toggle").addEventListener("click", () => {
-  isVertical = ! isVertical;
-
   chart.updateOptions({
     plotOptions: {
       bar: {
-        horizontal: !isVertical
+        horizontal: isVertical
       }
     }
   });
+
+  isVertical = !isVertical;
 
   toggleButton();
 });
@@ -102,5 +110,5 @@ const toggleButton = () => {
     button.innerHTML = "Vertical";
   } else {
     button.innerHTML = "Horizontal";
-  };
+  }
 };
