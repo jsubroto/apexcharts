@@ -3,12 +3,14 @@ body {
 }
 
 .container {
-  margin: 70px auto;
-  overflow: hidden;
-  width: 80%;
+  margin: 20px auto;
   text-align: center;
 }
 
 .btn {
   margin-bottom: 5px;
+}
+
+img {
+  width: 10%;
 }
